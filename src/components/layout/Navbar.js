@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Navbar extends Component {
   render() {
@@ -7,15 +7,17 @@ class Navbar extends Component {
 
     return (
       <nav className="navbar bg-primary">
-        <h1><i className={icon} /> {title}</h1>
+        <h1>
+          <i className={icon} /> {title}
+        </h1>
       </nav>
     );
   }
 }
 
 Navbar.defaultProps = {
-  icon: 'fab fa-github',
-  title: 'Github Finder',
+  icon: "fab fa-github",
+  title: "Github Finder",
 };
 
 Navbar.propTypes = {
