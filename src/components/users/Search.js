@@ -7,12 +7,16 @@ class Search extends Component {
   };
 
   handleSubmit = (e) => {
-    const { searchUsers } = this.props;
+    const { searchUsers, setAlert } = this.props;
     const { text } = this.state;
 
     e.preventDefault();
-    searchUsers(text);
-    this.setState({ text: '' });
+    if (text === '') {
+      setAlert('Please enter something', 'light');
+    } else {
+      searchUsers(text);
+      this.setState({ text: '' });
+    }
   };
 
   handleChange = (e) => {
@@ -55,6 +59,7 @@ Search.propTypes = {
   searchUsers: PropTypes.func.isRequired,
   clearUsers: PropTypes.func.isRequired,
   showClear: PropTypes.bool.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 export default Search;
