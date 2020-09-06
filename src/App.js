@@ -27,6 +27,13 @@ class App extends React.Component {
     });
   };
 
+  /**
+   * Clear users from state
+   */
+  clearUsers = () => {
+    this.setState({ users: [], loading: false });
+  };
+
   render() {
     const { loading, users } = this.state;
 
@@ -34,7 +41,11 @@ class App extends React.Component {
       <div className="App">
         <Navbar title="Github Finder" />
         <div className="container">
-          <Search searchUsers={this.searchUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={users.length > 0}
+          />
           <Users users={users} loading={loading} />
         </div>
       </div>

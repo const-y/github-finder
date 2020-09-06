@@ -22,6 +22,7 @@ class Search extends Component {
   };
 
   render() {
+    const { clearUsers, showClear } = this.props;
     const { text } = this.state;
 
     return (
@@ -40,6 +41,11 @@ class Search extends Component {
             className="btn btn-block badge-dark"
           />
         </form>
+        {showClear && (
+          <button className="btn btn-light btn-block" onClick={clearUsers}>
+            Clear
+          </button>
+        )}
       </div>
     );
   }
@@ -47,6 +53,8 @@ class Search extends Component {
 
 Search.propTypes = {
   searchUsers: PropTypes.func.isRequired,
+  clearUsers: PropTypes.func.isRequired,
+  showClear: PropTypes.bool.isRequired,
 };
 
 export default Search;
