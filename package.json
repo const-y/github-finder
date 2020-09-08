@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.11.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "react-context-devtool": "^2.0.0"
   }
 }
