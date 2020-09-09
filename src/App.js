@@ -11,41 +11,9 @@ import User from './components/users/User';
 import GithubState from './context/github/GithubState';
 
 const App = () => {
-  const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-
-  /**
-   * Get single Github user
-   * @param {string} username
-   * @return {Promise<void>}
-   */
-  const getUser = async (username) => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-    setUser(res.data);
-    setLoading(false);
-  };
-
-  /**
-   * Clear users from state
-   */
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  };
-
-  /**
-   * Clear user from state
-   */
-  const clearUser = () => {
-    setUser({});
-    setRepos([]);
-    setLoading(false);
-  };
 
   /**
    * Get user repos
@@ -85,12 +53,8 @@ const App = () => {
                 path="/"
                 render={() => (
                   <>
-                    <Search
-                      clearUsers={clearUsers}
-                      showClear={users.length > 0}
-                      setAlert={showAlert}
-                    />
-                    <Users users={users} loading={loading} />
+                    <Search setAlert={showAlert} />
+                    <Users />
                   </>
                 )}
               />
@@ -101,11 +65,8 @@ const App = () => {
                 render={(props) => (
                   <User
                     {...props}
-                    getUser={getUser}
                     getUserRepos={getUserRepos}
-                    user={user}
                     loading={loading}
-                    clearUser={clearUser}
                     repos={repos}
                   />
                 )}
@@ -113,7 +74,7 @@ const App = () => {
             </Switch>
           </div>
         </div>
-      </Router>{' '}
+      </Router>
     </GithubState>
   );
 };
