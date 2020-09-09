@@ -1,6 +1,7 @@
 import {
   CLEAR_USER,
   CLEAR_USERS,
+  GET_REPOS,
   GET_USER,
   SEARCH_USERS,
   SET_LOADING,
@@ -38,6 +39,13 @@ export default (state, action) => {
         repos: [],
         loading: false,
       };
+    case GET_REPOS: {
+      return {
+        ...state,
+        repos: action.payload,
+        loading: false,
+      };
+    }
     default:
       return state;
   }

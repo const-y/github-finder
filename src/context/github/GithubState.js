@@ -8,6 +8,7 @@ import {
   CLEAR_USERS,
   GET_USER,
   CLEAR_USER,
+  GET_REPOS,
 } from '../types';
 
 const GithubState = ({ children }) => {
@@ -44,6 +45,14 @@ const GithubState = ({ children }) => {
   };
 
   /** Get Repos */
+  const getUserRepos = async (username) => {
+    setLoading();
+
+    const res = await axios.get(
+      `https://api.github.com/users/${username}/repos?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+    dispatch({ type: GET_REPOS, payload: res.data });
+  };
 
   /** Clear users */
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
@@ -67,6 +76,7 @@ const GithubState = ({ children }) => {
         clearUsers,
         getUser,
         clearUser,
+        getUserRepos,
       }}
     >
       {children}
