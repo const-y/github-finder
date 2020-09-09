@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import Repos from '../repos/Repos';
 import GithubContext from '../../context/github/githubContext';
 
-const User = ({ getUserRepos, match, loading, repos }) => {
+const User = ({ getUserRepos, match, repos }) => {
   const { login: loginParam } = match.params;
 
-  const { getUser, user, clearUser } = useContext(GithubContext);
+  const { getUser, user, clearUser, loading } = useContext(GithubContext);
 
   useEffect(() => {
     getUser(loginParam);
@@ -107,7 +107,6 @@ const User = ({ getUserRepos, match, loading, repos }) => {
 };
 
 User.propTypes = {
-  loading: PropTypes.bool.isRequired,
   match: PropTypes.object.isRequired,
   getUserRepos: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
