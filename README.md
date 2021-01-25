@@ -1,4 +1,8 @@
+Searching Github's users using Github API
 https://www.udemy.com/share/101XdqAEIYdFpWQHgD/
+
+## Live Demo
+The project is atumaticly deployed to Netify and available here: [https://const-y-github-finder.netlify.app/](https://const-y-github-finder.netlify.app/)
 
 ## Available Scripts
 
